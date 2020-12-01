@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import React, { Component } from 'react'
+import Navbar from './components/layout/Navbar'
+import UserItem from './components/users/UserItem'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+
+
+  render() {
+    const test = 'Github FinderV1.0.0'
+    return (
+      <div className='App'>
+        <h1>
+          <Navbar title={test}></Navbar>
+        </h1>
+        <UserItem /> 
+      </div>
+    )
+  }
 }
-
-export default App;
