@@ -1,8 +1,45 @@
-
-.navbar{
+.navbar {
   font-size: large;
   color: white;
+  margin-bottom: 3%;
 }
+
 .bg-primary {
   background-color: orange;
+}
+
+.card {
+  width: 150px;
+  height: 150px;
+  border: green;
+  margin: 30px, 30px, 30px, 30px;
+}
+
+.text-center {
+  text-align: center;
+}
+img {
+  width: 100%;
+}
+
+.round-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+}
+
+.btn {
+  height: 100px;
+  width: 30px;
+}
+
+.btn-dark {
+  background-color: turquoise;
+}
+
+.container {
+  max-width: 1100px;
+  margin:auto;
+  overflow: hidden;
+  padding: 0 2rem;
 }

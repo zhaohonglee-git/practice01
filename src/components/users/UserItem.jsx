@@ -1,23 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
-export class UserItem extends Component {
-
-  constructor(){
-    super()
-    // console.log('123')
-    this.state={
-      login:'zhaohonglee',
-      id:1,
-    }
-  }
-
-  render() {
-    return (
+const UserItem = ({ user: { login, avatar_url, html_url } }) => {
+  // https://api.github.com/users 请求的API地址
+  
+  return (
+    <div className='card text-center'>
+      <img src={avatar_url} alt="" className='round-img' style={{ width: '60px' }} />
+      <h3>{login}</h3>
       <div>
-        userItem
+        <a href={html_url} className='btn btn-dark btn-sm my-1'>more</a>
       </div>
-    )
-  }
+    </div>
+  )
+}
+
+UserItem.propTypes = {
+  user: PropTypes.object.isRequired,
 }
 
 export default UserItem
