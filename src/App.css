@@ -29,12 +29,14 @@ img {
 }
 
 .btn {
-  height: 100px;
-  width: 30px;
+  color:white;
 }
 
 .btn-dark {
-  background-color: turquoise;
+  background-color:black;
+}
+.btn-block {
+  display: block;
 }
 
 .container {
