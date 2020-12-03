@@ -1,15 +1,19 @@
 import './App.css'
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Users from './components/users/Users'
 import Search from './components/users/Search.jsx'
+import Alert from './components/layout/Alert'
+import About from './components/pages/About'
 import axios from "axios";
 
 export default class App extends Component {
 
   state = {
     users: [],
-    loading: false
+    loading: false,
+    alert: null
   }
 
   // 页面初始加载的时候显示该页面，当进行搜索的时候用搜索结果替换
@@ -47,16 +51,44 @@ export default class App extends Component {
     })
   }
 
+  clearUsers = () => this.setState({
+    users: [],
+    loading: false
+  }
+  )
+
+  setAlert = (msg, type) => {
+    this.setState({
+      alert: { msg: msg, type: type }
+    })
+    setTimeout(() => {
+      this.setState({
+        alert: null
+      })
+    }, 2000)
+  }
+
   render() {
     const test = 'Github FinderV1.0.0'
+    const { users, loading, alert } = this.state
     return (
-      <div className='App'>
-        <Navbar title={test}></Navbar>
-        <div className='container'>
-          <Search searchUsers={this.searchUsers} />
-          <Users loading={this.state.loading} users={this.state.users} />
+      <Router>
+        <div className='App'>
+          <Navbar title={test}></Navbar>
+          <div className='container'>
+            <Alert alert={alert} />
+            <Switch>
+              <Route exact path='/' render={props => (
+                <Fragment>
+                  <Search setAlert={this.setAlert} showClear={users.length > 0 ? true : false} clearUsers={this.clearUsers} searchUsers={this.searchUsers} />
+                  <Users loading={loading} users={users} />
+                </Fragment>
+              )} />
+              <Route exact path='/about' component={About} />
+            </Switch>
+          </div>
         </div>
-      </div>
+      </Router>
     )
   }
 }

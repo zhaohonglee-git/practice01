@@ -18,6 +18,7 @@
 .text-center {
   text-align: center;
 }
+
 img {
   width: 100%;
 }
@@ -29,19 +30,24 @@ img {
 }
 
 .btn {
-  color:white;
+  color: white;
 }
 
 .btn-dark {
-  background-color:black;
+  background-color: black;
 }
+
 .btn-block {
   display: block;
 }
 
 .container {
   max-width: 1100px;
-  margin:auto;
+  margin: auto;
   overflow: hidden;
   padding: 0 2rem;
+}
+
+.light {
+  color: red;
 }
