@@ -6,6 +6,7 @@ import Spinner from '../layout/Spinner'
 import PropTypes from 'prop-types'
 
 
+
 const Users = ({ users, loading }) => {
 
   if (loading) {
@@ -25,7 +26,6 @@ Users.PropTypes = {
   users: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired
 }
-
 
 
 // 可以在jax中自定义样式，但是需要改为
