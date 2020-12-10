@@ -1,10 +1,12 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 import Repos from '../repos/Repos'
 import { Link } from 'react-router-dom'
 import Spinner from '../layout/Spinner'
-import PropTypes from 'prop-types'
+import GithubContext from '../../context/github/githubContext.js'
 
-const User = ({ loading, repos, user, getUserRepos, getUser, match }) => {
+const User = ({ match }) => {
+  const githubContext = useContext(GithubContext)
+  const { getUser, loading, user, repos, getUserRepos } = githubContext
 
   // componentDidMount() {
   //   // console.log(this.props, '**User**')
@@ -17,7 +19,7 @@ const User = ({ loading, repos, user, getUserRepos, getUser, match }) => {
     getUser(match.params.login)
     getUserRepos(match.params.login)
     // console.log('render........')
-  },[])
+  }, [])
 
   // 可以通过这个接口地址得到很多字段内容，如果有需要可以自定义结构出来需要的字段
   const { name, id, hireable, avatar_url, location, bio, html_url, company, blog } = user
@@ -70,12 +72,6 @@ const User = ({ loading, repos, user, getUserRepos, getUser, match }) => {
   );
 }
 
-User.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  user: PropTypes.object.isRequired,
-  getUser: PropTypes.func.isRequired,
-  getUserRepos: PropTypes.func.isRequired,
-  repos: PropTypes.array.isRequired,
-}
+
 
 export default User
